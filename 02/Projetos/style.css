@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.scores {
+  display: flex;
+}
+
+.score {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.score h1 {
+  font-weight: 300;
+  font-size: 1.6em;
+  margin-bottom: 0.5em;
+}
+
+.life-bar {
+  width: 80%;
+  height: 20px;
+  border: 1px solid #aaa;
+}
+
+.life-bar .life {
+  height: 100%;
+  width: 100%;
+  background: green;
+}
+
+.life-bar .life.danger {
+  background: red;
+}
+
+.result {
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.result .win {
+  color: green;
+}
+
+.result .lose {
+  color: red;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.buttons .btn {
+  flex-grow: 1;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 15px;
+  color: white;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+.buttons .start {
+  background-color: #4253af;
+}
+
+.buttons .attk {
+  background-color: #e51c23;
+}
+.buttons .special {
+  background-color: #ff9800;
+}
+.buttons .heal {
+  background-color: #259b24;
+}
+.buttons .give-up {
+  background-color: #bbb;
+}
+
+.logs ul {
+  list-style: none;
+}
+
+.logs li {
+  padding: 7px 15px;
+  border-radius: 7px;
+  margin-bottom: 0.5em;
+  color: white;
+}
+
+.logs .player {
+  background-color: #4253af;
+}
+
+.monster {
+  background-color: #e51c23;
+}
