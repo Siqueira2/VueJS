@@ -10,6 +10,7 @@ new Vue({
       height: "100px",
       background: "red",
     },
+    width: "0",
   },
   methods: {
     iniciarEfeito() {
@@ -17,7 +18,14 @@ new Vue({
         this.classe1 = this.classe1 === "destaque" ? "encolher" : "destaque";
       }, 1000);
     },
-    iniciarProgresso() {},
+    iniciarProgresso() {
+      let valor = 0;
+      const temp = setInterval(() => {
+        valor += 5;
+        this.width = `${valor}%`;
+      }, 500);
+      if (this.width === "100%") clearInterval(temp);
+    },
 
     setDanger(e) {
       if (e.target.value === "true") this.danger = true;
