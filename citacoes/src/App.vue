@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <Citacoes />
+    <!-- <Citacoes /> -->
     <Sobre />
+    <component :is="componente" />
   </div>
 </template>
 
@@ -10,6 +11,12 @@ import Citacoes from "./components/Citacoes";
 import Sobre from "./components/Sobre";
 
 export default {
+  data() {
+    return {
+      componente: "Citacoes",
+    };
+  },
+
   components: { Citacoes, Sobre },
 };
 </script>
