@@ -44,6 +44,14 @@
 		<transition name="fade" mode="out-in">
 			<component :is="componenteSelecionado"></component>
 		</transition>
+
+		<hr>
+		<b-button @click="adicionarAluno" class="mb-4">Adicionar Aluno</b-button>
+		<transition-group name="slide" tag="div">
+			<b-list-group v-for="aluno in alunos" :key="aluno">
+				<b-list-group-item @click="removerAluno(i)">{{ aluno }}</b-list-group-item>
+			</b-list-group>
+		</transition-group>
 	</div>
 </template>
 
@@ -54,6 +62,7 @@ import AlertaInfo from './alertaInfo.vue'
 export default {
 	data() {
 		return {
+			alunos: ['Roberto', 'Pedro', 'Paulo'],
 			msg: 'Uma mensagem de informação para o usuário',
 			exibir: false,
 			exibir2: true,
@@ -65,6 +74,15 @@ export default {
 	components: { AlertaAdvertencia, AlertaInfo },
 
 	methods: {
+		adicionarAluno() {
+			const random = Math.random().toString(36).substring(2)
+			this.alunos.push(random)
+		},
+
+		removerAluno(indice) {
+			this.alunos.splice(indice, 1)
+		},
+
 		animar(el, done, negativo) {
 			let rodada = 1
 			const temp = setInterval(() => {
@@ -172,6 +190,8 @@ export default {
 }
 
 .slide-leave-active {
+	position: absolute;
+	width: 100%;
 	animation: slide-out 2s ease;
 	transition: opacity 2s;
 }
@@ -179,5 +199,9 @@ export default {
 .slide-enter,
 .slide-leave-to {
 	opacity: 0;
+}
+
+.slide-move {
+	transition: transform 1s;
 }
 </style>
