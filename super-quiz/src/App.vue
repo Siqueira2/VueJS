@@ -1,12 +1,41 @@
 <template>
 	<div id="app">
 		<h1>Super Quiz</h1>
+		<transition name="flip" mode="out-in">
+			<Question v-if="questionMode" :question="questions[currentQuestion]" @answered="showResult" />
+			<Result v-else :result="result" @confirmed="nextQuestion" />
+		</transition>
 	</div>
 </template>
 
 <script>
-export default {
+import questions from './util/questions'
+import Question from './components/Question.vue'
+import Result from './components/Result.vue';
 
+export default {
+	components: { Question, Result },
+	data() {
+		return {
+			result: false,
+			questionMode: true,
+			questions,
+			currentQuestion: 0
+		}
+	},
+
+	methods: {
+		showResult(result) {
+			this.result = result
+			this.questionMode = false
+		},
+
+		nextQuestion() {
+			let random = Math.random() * this.question.length
+			this.currentQuestion = parseInt(random)
+			this.questionMode = true
+		}
+	}
 }
 </script>
 
@@ -34,13 +63,23 @@ body {
 }
 
 @keyframes flip-out {
-	from { transform: rotateY(0deg); }
-	to { transform: rotateY(90deg); }
+	from {
+		transform: rotateY(0deg);
+	}
+
+	to {
+		transform: rotateY(90deg);
+	}
 }
 
 @keyframes flip-in {
-	from { transform: rotateY(90deg); }
-	to { transform: rotateY(0deg); }
+	from {
+		transform: rotateY(90deg);
+	}
+
+	to {
+		transform: rotateY(0deg);
+	}
 }
 
 .flip-enter-active {
