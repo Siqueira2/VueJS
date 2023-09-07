@@ -1,8 +1,9 @@
 <template>
   <div class="citacoes">
     <Citacao>
-      <h1>{{ citacoes[indice].autor }}</h1>
-      <p>{{ citacoes[indice].texto }}</p>
+      <h1 slot="author">{{ citacoes[indice].autor }}</h1>
+      <p slot="texto">{{ citacoes[indice].texto }}</p>
+      <p slot="fonte">{{ citacoes[indice].fonte }}</p>
     </Citacao>
     <span>
       <button @click="numero--">&lt;</button>
